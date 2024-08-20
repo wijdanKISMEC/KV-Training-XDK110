@@ -1,0 +1,32 @@
+package main;
+import platforms.xdk110;
+
+every accelerometer.any_motion {
+	println("motion occured");
+}
+
+every accelerometer.no_motion {
+	println("static");
+}
+
+every accelerometer.double_tap{
+	println("double tapped");
+}
+
+every accelerometer.single_tap{
+	println("single tapped");
+}
+
+every accelerometer.flat{
+	println("XDK110 flat");
+}
+
+//detect shocks or other high acceleration events
+every accelerometer.high_g{
+	println("shocks");
+}
+
+//free fall detection
+every accelerometer.low_g{
+	println("free fall");
+}
