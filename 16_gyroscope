@@ -1,0 +1,21 @@
+package main;
+import platforms.xdk110;
+
+
+every 1 seconds {
+	
+	var x = gyroscope.x_axis.read();
+    var y = gyroscope.y_axis.read();
+    var z = gyroscope.z_axis.read();
+    var angleX = 0;
+    
+    println(`x: ${x} y: ${y} z: ${z}  [deg/s]`);
+	
+	if (x<=0){
+		println("xdk rotate in anti-clockwised at axis x");
+	}
+	else{
+		println("xdk rotate in clockwised at axis x");
+	}    
+}
+
