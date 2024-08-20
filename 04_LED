@@ -1,23 +1,39 @@
-
 package main;
 import platforms.xdk110;
 
-every button_one.pressed {
-	print("Hello World\n");
+/*
+
+setup <resource name> : <resource>{
+	
 }
 
-setup lampu : LED{
+*/
+
+
+setup light : LED{
+	var red = light_up(Red);
+	var yel = light_up(Yellow);
+	var orange = light_up(Orange);
 	
-	var ledMerah = light_up(Red);
-	var ledKuning = light_up(Yellow);
-	var ledOren = light_up(Orange);	
-	
+}
+
+// <resourceName>.<LEDvarName>.write(bool)
+every button_one.pressed{
+	light.red.write(true);
+	light.orange.write(true);
+	light.yel.write(true);	
 }
 
 every button_two.pressed{
-	
-	lampu.ledMerah.write(true);
-	lampu.ledKuning.write(true);
-	lampu.ledOren.write(true);
+	light.red.write(false);
+	light.orange.write(false);
+	light.yel.write(false);
 }
+
+every 2 seconds{
+	println(`Red LED : ${light.red.read()}`);
+	println(`Yellow LED : ${light.yel.read()}`);
+	println(`Orange LED : ${light.orange.read()}`);
+}
+
 
