@@ -1,0 +1,62 @@
+package main;
+import platforms.xdk110;
+
+setup lan:WLAN{
+	authentication = Personal(psk = "industryiot#4");
+	ssid = "industry4";
+}
+
+setup mqtt:MQTT{
+	transport = lan;
+	url = "mqtt://broker.hivemq.com:1883";
+	//authentication = Login(username = "iotkismec" , password = "864e5713b32d4517bdd1b49a97fc07fe" );	
+	clientId = "XDK_Wijdan";
+	
+	var topicHumi = topic("kismec/xdk/humi");
+	var topicTemp = topic("kismec/xdk/temp");
+	var topicPressure = topic("kismec/xdk/press");
+	var topicLux = topic("kismec/xdk/lux");
+	var topicAccelX = topic("kismec/xdk/accelx");
+	var topicAccelY = topic("kismec/xdk/accely");
+	var topicAccelZ = topic("kismec/xdk/accelz");
+	var topicNoise = topic("kismec/xdk/noise");
+	var topicGyroX = topic("kismec/xdk/gyrox");
+	var topicGyroY = topic("kismec/xdk/gyroy");
+	var topicGyroZ = topic("kismec/xdk/gyroz");
+	
+}
+
+every 30 seconds {
+	var temp = environment.temperature.read()/1000.0;
+	var humi = environment.humidity.read();
+	var pressure = environment.pressure.read();
+	var lux = light.intensity.read()/1000.0;
+	
+	mqtt.topicHumi.write(`${humi}`);
+	mqtt.topicTemp.write(`${temp}`);
+	mqtt.topicPressure.write(`${pressure}`);
+	mqtt.topicLux.write(`${lux}`);
+	
+}
+
+
+every 1 seconds {
+	
+	var accel_x= accelerometer.x_axis.read();
+	var accel_y= accelerometer.y_axis.read();
+	var accel_z= accelerometer.z_axis.read();
+	
+	var gyro_x= gyroscope.x_axis.read();
+	var gyro_y= gyroscope.y_axis.read();
+	var gyro_z= gyroscope.z_axis.read();
+	var noise = noise_sensor.noise.read();
+	
+	mqtt.topicAccelX.write(`${accel_x}`);
+	mqtt.topicAccelY.write(`${accel_y}`);
+	mqtt.topicAccelZ.write(`${accel_z}`);
+	mqtt.topicNoise.write(`${noise}`);
+	mqtt.topicGyroX.write(`${gyro_x}`);
+	mqtt.topicGyroY.write(`${gyro_y}`);
+	mqtt.topicGyroZ.write(`${gyro_z}`);
+}
+
