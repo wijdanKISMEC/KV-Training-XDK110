@@ -1,0 +1,32 @@
+package main;
+import platforms.xdk110;
+
+var a = 10;
+var b = 20;
+var c = 2.0;
+
+every button_one.pressed {
+	
+	var eq = a == b;
+	var notEq = a != b;
+	var less = a < b;
+	var great = a > b;
+	var lessEq = a >= b;
+	var greatEq = a <= b;
+	
+	
+	println(`${eq}`);
+	println(`${notEq}`);
+	println(`${less}`);
+	println(`${great}`);
+	println(`${lessEq}`);
+	println(`${greatEq}`);
+	
+}
+
+every button_two.pressed{
+	a++;
+	b--;
+	
+	println(`a: ${a}, b: ${b}`);
+}
