@@ -1,0 +1,10 @@
+
+package main;
+import platforms.xdk110;
+
+var noise:float;			//can try declare without explicitly inferred var type. the var will be type : void
+every 5 seconds{
+	
+	noise = noise_sensor.noise.read();
+	println(`${noise}`);
+}
