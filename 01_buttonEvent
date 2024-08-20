@@ -1,0 +1,20 @@
+package main;
+import platforms.xdk110;
+
+
+every button_one.pressed {
+	print("Button 1 pressed\n");
+}
+
+every button_one.released {
+	print("Button 1 released\n");
+}
+
+
+every button_two.pressed {
+	println("Button 2 pressed");
+}
+
+every button_two.released {
+	println("Button 2 released");
+}
