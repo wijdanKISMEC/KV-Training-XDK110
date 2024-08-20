@@ -1,0 +1,17 @@
+package main;
+import platforms.xdk110;
+
+setup wifi : WLAN {
+  authentication = Personal(psk = "industryiot#4");
+  ssid = "industry4";
+}
+
+setup server : HttpRestClient {
+  transport = wifi;
+  endpointBase = 'http://172.16.150.184:8000';
+  var root = resource('/api/iotgw2/sensor1/temp', 'application/json', POST);
+}
+
+every 5 seconds {
+  server.root.write('{"value": 100}');
+}
