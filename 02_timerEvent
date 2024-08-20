@@ -1,0 +1,10 @@
+package main;
+import platforms.xdk110;
+
+every button_one.pressed {
+	print("From button\n");
+}
+
+every 5 seconds {
+	print("Hello World\n");
+}
