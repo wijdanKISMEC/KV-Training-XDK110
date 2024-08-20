@@ -1,0 +1,27 @@
+package main;
+import platforms.xdk110;
+
+
+// to read the button_one states, this event need to be included so that initialization occur at application.c
+every button_one.pressed{
+	
+}
+every button_two.pressed{
+	
+}
+
+every 2 seconds {
+	
+	var b1 = button_one.is_pressed.read();
+	var b2 = button_two.is_pressed.read();
+	
+	var not = !(b1);
+	var or = b1 || b2;
+	var and = b1 && b2; 
+	println("\n\n");
+	println(`b1 : ${b1} , b2 : ${b2} `);
+	println(`not button 1 : ${not} \tbutton1 & button2 : ${and} \tbutton1 | button2 : ${or}`);
+
+	
+}
+
