@@ -1,0 +1,23 @@
+
+package main;
+import platforms.xdk110;
+
+every button_one.pressed {
+	print("Hello World\n");
+}
+
+setup lampu : LED{
+	
+	var ledMerah = light_up(Red);
+	var ledKuning = light_up(Yellow);
+	var ledOren = light_up(Orange);	
+	
+}
+
+every button_two.pressed{
+	
+	lampu.ledMerah.write(true);
+	lampu.ledKuning.write(true);
+	lampu.ledOren.write(true);
+}
+
