@@ -1,0 +1,24 @@
+package main;
+import platforms.xdk110;
+
+setup led : LED{
+	var red = light_up(Red);
+	var yel = light_up(Yellow);
+	var orange = light_up(Orange);
+	
+}
+
+//the brighter the bigger lux value
+
+every 5 seconds{
+	var light:double = light.intensity.read()/1000.00;
+    println(`Light: ${light} lux`);
+    
+    if (light < 50){
+    	led.orange.write(true);
+    }
+    else{
+    	led.orange.write(false);
+    }
+    
+}
