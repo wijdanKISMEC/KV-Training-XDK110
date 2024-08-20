@@ -1,0 +1,16 @@
+package main;
+import platforms.xdk110;
+
+setup sd :SDCard{
+	var writeSD = appendingTextWrite("testWrite.txt");	//filePath
+	var readSD = resumingTextRead("testWrite.txt",5);  // filePath,buffer	
+}
+
+every button_one.pressed {
+	sd.writeSD.write("abcde\nfghijk");
+}
+
+every button_two.pressed{
+	var text = sd.readSD.read();
+	println(`${text}`);
+}
