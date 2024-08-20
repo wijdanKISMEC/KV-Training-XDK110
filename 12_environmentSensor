@@ -1,0 +1,20 @@
+package main;
+import platforms.xdk110;
+
+// -- correction factor for the XDKs heatoutput
+var tempCorrection = 6.5975;
+
+every 2 seconds {
+	var humid = environment.humidity.read();
+	var temp:double = environment.temperature.read()/1000.00; 
+	var pres:double = environment.pressure.read();
+	
+	// -- this corrects for the heat output of a typical running XDK application
+    temp = temp - tempCorrection;
+    
+
+	println (`Humidity : ${humid} %Rh, Temperature : ${temp} Celsius, Pressure : ${pres}Pa`);
+	
+}
+
+//don't edit this, will affect application.c file
