@@ -1,0 +1,12 @@
+
+
+package main;
+import platforms.xdk110;
+
+
+every 1 seconds {
+    var x = accelerometer.x_axis.read();
+    var y = accelerometer.y_axis.read();
+    var z = accelerometer.z_axis.read();
+    println(`Accelerometer output: \n x: ${x}mg\n y: ${y}mg\n z: ${z}mg`);		//relative to standard gravity (1g = 9.80665m/s2)
+}
