@@ -1,0 +1,11 @@
+package main;
+import platforms.xdk110;
+
+
+
+every 1 seconds {
+    var x = magnetometer.x_axis.read()/1000000.0;		//initial value in microTesla
+    var y = magnetometer.y_axis.read()/1000000.0;
+    var z = magnetometer.z_axis.read()/1000000.0;
+    println(`x: ${x} y: ${y} z: ${z}  [Tesla]`);
+}
