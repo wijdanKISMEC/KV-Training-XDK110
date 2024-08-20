@@ -1,0 +1,27 @@
+package main;
+// The XDK110 is the device used
+import platforms.xdk110;   
+             
+// Setup a BLE resource named myPhone
+setup myPhone : BLE {
+// Name of the sensor seen by other BLE devices, only be 20 explicit characters long                   
+     deviceName = "BoschXDK";
+     //macaddress
+     macAddress = "FC:D6:BD:00:00:B0";
+     //serviceUID
+     serviceUID = 0xFFFF;
+     // Advertising interval in milliseconds.        
+     advertisingInterval = 2000;
+     // The last four digits of the device UUID are assigned to the 32-bit characteristic  
+     // for temperature(measured in thousandths of a degree Celsius).     
+     var myTemperature = int32_characteristic(UUID=0xAACC);  
+      
+}
+
+// Do this every 5 seconds
+every 5 seconds {
+     // Write the current temperature value to myTemperature variable
+     println(`Temperature : ${environment.temperature.read()} Celcius`); 
+     myPhone.myTemperature.write(environment.temperature.read()); 
+}
+
