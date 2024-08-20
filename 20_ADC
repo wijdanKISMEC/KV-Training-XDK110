@@ -1,0 +1,12 @@
+
+package main;
+import platforms.xdk110;
+
+setup adc : ADC{
+	var adc5 = channel(CH5);	//ADC pins PD5 and PD6 on the extension bus.
+}
+
+every 1 second {
+	var readADC = adc.adc5.read();
+	println(`${readADC}`);
+}
