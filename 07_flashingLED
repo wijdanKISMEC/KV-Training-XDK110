@@ -1,0 +1,25 @@
+package main;
+import platforms.xdk110;
+
+setup light : LED{
+	var red = light_up(Red);
+	var yel = light_up(Yellow);
+	var orange = light_up(Orange);
+	
+}
+
+
+every 2 seconds{
+	
+	var rr = light.red.read();
+	var ry = light.yel.read();
+	var ro = light.orange.read();
+	
+	light.red.write(!rr);
+	light.orange.write(!ry);
+	light.yel.write(!ro);
+	
+	println(`Red LED : ${light.red.read()}`);
+	println(`Yellow LED : ${light.yel.read()}`);
+	println(`Orange LED : ${light.orange.read()}`);
+}
