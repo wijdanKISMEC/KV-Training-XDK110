@@ -1,0 +1,18 @@
+
+package main;
+import platforms.xdk110;
+
+setup pinout: GPIO{
+	var input1 = digitalIn(PA1,PullUp);
+	var output1 = digitalOut(PA0);
+//	var outpu1 = digitalOut(PA0,false/true);
+}
+
+var inRead:bool;
+
+every 1 seconds {
+	inRead = pinout.input1.read();
+	println(`inRead = ${inRead}`);
+	pinout.output1.write(inRead);	
+	
+}
