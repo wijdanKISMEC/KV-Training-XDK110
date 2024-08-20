@@ -1,0 +1,38 @@
+
+package main;
+import platforms.xdk110;
+
+var a=10;
+var b=20;
+
+every button_one.pressed {
+	
+	if (a>20) {
+		println(`a : ${a}, greater than 20`);	
+	}
+	
+	else if (a>15) {
+		println(`a : ${a}, greater than 15`);
+	}
+	
+	else{
+		println(`a : ${a}, less than 15`);
+	}
+	a++;
+	
+}
+
+every button_two.pressed{
+	while(button_two.is_pressed.read()){
+		println("in while loop");
+	}
+	
+	println("outside while loop");
+}
+
+every button_one.released {
+	for (var i = 0; i <10; i++){
+		println(`${i}`);
+	}
+}
+
