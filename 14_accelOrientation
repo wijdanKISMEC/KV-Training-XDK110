@@ -1,0 +1,17 @@
+package main;
+import platforms.xdk110;
+
+every 1 seconds {
+    var x = accelerometer.x_axis.read()/1000.0;
+    var y = accelerometer.y_axis.read()/1000.0;
+    var z = accelerometer.z_axis.read()/1000.0;
+    println(`Accelerometer output: \n x: ${x}g\n y: ${y}g\n z: ${z}g`);		//relative to standard gravity (1g = 9.80665m/s2)
+    
+    if (z>4){
+    	println("Button is 'UP' ");
+    }
+    
+    else if (z<-4) {
+    	println("Button is 'DOWN' ");
+    }
+}
