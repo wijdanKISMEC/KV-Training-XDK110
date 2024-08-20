@@ -1,0 +1,18 @@
+package main;
+import platforms.xdk110;
+
+var int1 = 10;
+var float1 = 10.5;
+
+every button_one.pressed {
+	print("Hello World\n");
+	println(`${int1}`);
+	println(`float1 = ${float1}`);
+	
+}
+
+every button_two.pressed{
+	var sum = int1 + float1;	//+,-,*(multiplication),/(division)
+	println(`int1 + float1 = ${sum}`);
+	
+}
